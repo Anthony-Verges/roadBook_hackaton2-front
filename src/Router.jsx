@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import HomeLogin from "./Components/HomeLogin";
+import Login from "./Components/HomeLogin";
 import Register from "./Components/Register";
 import Dashboard from "./Components/Dashboard";
 import Trip from "./Components/Trip";
@@ -9,14 +9,14 @@ import Footer from "./Components/Footer";
 const Router = () => {
   return (
     <BrowserRouter>
-      <Header />
+      {/* <Header /> */}
       <Switch>
-        <Route exact path="/" component={HomeLogin} />
+        <Route exact path="/" component={Login} />
         <Route exact path="/Registration" component={Register} />
         <Route exact path="/Dashboard" component={Dashboard} />
         <Route exact path="/Trip" component={Trip} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };
