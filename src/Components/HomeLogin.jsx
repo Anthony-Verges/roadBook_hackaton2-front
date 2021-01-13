@@ -6,6 +6,7 @@ const Login = () => {
   return (
     <Form>
       <Img src={logo} alt="" />
+      <Title1>LOG IN</Title1>
       <label>
         <Paragraphe>Username</Paragraphe>
         <Input type="text" />
@@ -16,13 +17,19 @@ const Login = () => {
       </label>
       <div>
         <Button type="submit">Submit</Button>
+        <Paragraphe>You don't have an account ?</Paragraphe>
+        <Button type="submit">Register</Button>
       </div>
     </Form>
   );
 };
 
+const Title1 = styled.h1`
+  color: #2a2f45;
+`;
+
 const Img = styled.img`
-  width: 250px;
+  width: 400px;
 `;
 
 const Input = styled.input`
@@ -42,11 +49,11 @@ const Form = styled.form`
 
 const Button = styled.button`
   border-radius: 50px;
-  background-color: white;
+  background-color: #2a2f45;
   padding: 14px 40px;
   border-style: none;
   margin-top: 25px;
-  color: #5ad1d7;
+  color: white;
   font-size: 15px;
 `;
 
