@@ -3,8 +3,11 @@ import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
 import logo from "../Images/logoOTRA_W.png";
+// import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  // const history = useHistory();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [userToken, setUserToken] = useState("");
@@ -34,7 +37,9 @@ const Login = () => {
             return Promise.reject(error);
           }
         );
+        // .then(history.push("/Dashboard"));
       })
+
       .catch((err) => {
         console.log(err);
       });
