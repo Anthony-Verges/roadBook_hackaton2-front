@@ -2,40 +2,34 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../Images/logoOTRA_W.png";
 
-const Register = () => {
+const Login = () => {
   return (
     <Form>
       <Img src={logo} alt="" />
-      <Title1>REGISTRATION</Title1>
+      <Title1>LOG IN</Title1>
       <label>
-        <Paragraphe>Firstname</Paragraphe>
+        <Paragraphe>Username</Paragraphe>
         <Input type="text" />
-      </label>
-      <label>
-        <Paragraphe>Surname</Paragraphe>
-        <Input type="text" />
-      </label>
-      <label>
-        <Paragraphe>E-mail</Paragraphe>
-        <Input type="email" />
       </label>
       <label>
         <Paragraphe>Password</Paragraphe>
         <Input type="password" />
       </label>
       <div>
+        <Button type="submit">Submit</Button>
+        <Paragraphe>You don't have an account ?</Paragraphe>
         <Button type="submit">Register</Button>
       </div>
     </Form>
   );
 };
 
-const Img = styled.img`
-  width: 400px;
-`;
-
 const Title1 = styled.h1`
   color: #2a2f45;
+`;
+
+const Img = styled.img`
+  width: 400px;
 `;
 
 const Input = styled.input`
@@ -50,7 +44,7 @@ const Form = styled.form`
   height: 100vh;
   text-align: center;
   padding-top: 50px;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
 `;
 
 const Button = styled.button`
@@ -69,4 +63,4 @@ const Paragraphe = styled.p`
   font-family: “Pragati Narrow”, sans-serif; ;
 `;
 
-export default Register;
+export default Login;
