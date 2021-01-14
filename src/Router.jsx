@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserContext from "./UserContext";
 import Login from "./Components/Authentification/Login";
-// import Register from "./Components/Authentification/Register";
+import Register from "./Components/Authentification/Register";
 import Dashboard from "./Components/Dashboard";
 import { useState } from "react";
 // import Trip from "./Components/Dashboard";
@@ -20,27 +20,24 @@ const Router = () => {
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ userToken, setUserToken }}>
-        {checkToken() ? (
-          <Switch>
-            <Layout>
-              <Route exact path="/Dashboard" component={Dashboard} />
-              {/* <Route exact path="/trips" component={Trip} />
-            <Route path="/trips/:id" component={Trip} /> */}
-            </Layout>
-          </Switch>
-        ) : (
-          <Login exact path="/" />
-        )}
+        <Switch>
+          {checkToken() ? (
+            <>
+              <Layout>
+                <Route exact path="/Dashboard" component={Dashboard} />
+                {/* <Route exact path="/" component={Login} /> */}
+                <Route exact path="/Registration" component={Register} />
+              </Layout>
+            </>
+          ) : (
+            <Route exact path="/" component={Login} />
+
+            // <Login exact path="/" />
+          )}
+        </Switch>
       </UserContext.Provider>
     </BrowserRouter>
   );
 };
 
 export default Router;
-
-{
-  /* <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/Registration" component={Register} />
-        </Switch> */
-}

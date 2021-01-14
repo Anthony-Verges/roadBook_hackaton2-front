@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useState, useEffect } from "react";
-import UserContext from "../UserContext";
+// import UserContext from "../UserContext";
 
 import { Card, CardTitle, CardText, Spinner, Button } from "reactstrap";
 
@@ -76,10 +76,8 @@ const Dashboard = () => {
               </Col>
             </Row>
           </Container>
-          ;
         </div>
       )}
-      ;
     </>
   );
 };
