@@ -1,14 +1,18 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Login from "./Components/HomeLogin";
-import Register from "./Components/Register";
+import UserContext from "./UserContext";
+import Login from "./Components/Authentification/Login";
+import Register from "./Components/Authentification/Register";
 import Dashboard from "./Components/Dashboard";
+import { useState } from "react";
 import Trip from "./Components/Dashboard";
 import Layout from "./Layout";
 
 const Router = () => {
+  const [userToken, setUserToken] = useState("");
   return (
     <BrowserRouter>
-      <Switch>
+      <UserContext.Provider value={{ userToken, setUserToken }}>
+         <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/Registration" component={Register} />
       </Switch>
@@ -18,7 +22,8 @@ const Router = () => {
           <Route exact path="/trips" component={Trip} />
           <Route path="/trips/:id" component={Trip} />
         </Layout>
-      </Switch>
+      </Switch> 
+      </UserContext.Provider>
     </BrowserRouter>
   );
 };
