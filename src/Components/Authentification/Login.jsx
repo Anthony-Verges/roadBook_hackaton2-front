@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
 import logo from "../Images/logoOTRA_W.png";
+import UserContext from "../../UserContext";
+
 // import { useHistory } from "react-router-dom";
 
 const Login = () => {
@@ -10,7 +12,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userToken, setUserToken] = useState("");
+  const { userToken, setUserToken } = useContext(UserContext);
   console.log(userToken);
 
   const handleSubmit = (e) => {

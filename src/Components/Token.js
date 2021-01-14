@@ -1,14 +1,14 @@
-const { useHistory } = require("react-router-dom");
+// const { useHistory } = require("react-router-dom");
 
-const Token = () => {
-  const history = useHistory();
-  const token = localStorage.getItem("token");
+// const Token = () => {
+//   const history = useHistory();
+//   const token = localStorage.getItem("token");
 
-  if (!token) {
-    return history.push("/");
-  }
+//   if (!token) {
+//     return history.push("/");
+//   }
 
-  return history.push("/Trip");
-};
+//   return history.push("/Trip");
+// };
 
-module.export = Token;
+// module.export = Token;
