@@ -1,22 +1,49 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import logo from "../Images/logoOTRA_W.png";
+import PropTypes from "prop-types";
 
-const Login = () => {
+const Login = ({ setToken }) => {
+  const [userName, setUsername] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const token = {
+      userName,
+      password,
+    };
+    setToken(token);
+    console.log(token);
+  };
+
   return (
     <Form>
       <Img src={logo} alt="" />
       <Title1>LOG IN</Title1>
       <label>
         <Paragraphe>Username</Paragraphe>
-        <Input type="text" />
+        <Input
+          type="text"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
       </label>
       <label>
         <Paragraphe>Password</Paragraphe>
-        <Input type="password" />
+        <Input
+          type="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
       </label>
       <div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" onClick={handleSubmit}>
+          Submit
+        </Button>
         <Paragraphe>You don't have an account ?</Paragraphe>
         <Button type="submit">Register</Button>
       </div>
@@ -37,6 +64,7 @@ const Input = styled.input`
   border-style: none;
   width: 200px;
   height: 25px;
+  outline: none;
 `;
 
 const Form = styled.form`
@@ -55,6 +83,7 @@ const Button = styled.button`
   margin-top: 25px;
   color: white;
   font-size: 15px;
+  outline: none;
 `;
 
 const Paragraphe = styled.p`
@@ -62,5 +91,9 @@ const Paragraphe = styled.p`
   font-size: 20px;
   font-family: “Pragati Narrow”, sans-serif; ;
 `;
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};
 
 export default Login;
