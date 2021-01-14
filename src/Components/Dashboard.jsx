@@ -1,6 +1,5 @@
+import { Container, Row, Col, Spinner } from "reactstrap";
 import { useState, useEffect } from "react";
-import { Container, Spinner } from "reactstrap";
-
 import Header from "./Header/Header";
 import axios from "axios";
 import { API_URL } from "../env";
@@ -48,7 +47,6 @@ const Dashboard = () => {
           </Container>
         </div>
       )}
-      ;
     </>
   );
 };
