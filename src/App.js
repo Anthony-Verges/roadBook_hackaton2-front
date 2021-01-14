@@ -1,7 +1,7 @@
 import Header from "./Components/Header/Header";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 // import "./App.css";
-import Footer from "./Components/Footer/Footer";
+// import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         </Popup>
       </Marker> */}
       {/* </MapContainer> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
