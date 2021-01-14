@@ -3,13 +3,20 @@ import { Container, Row, Col } from "reactstrap";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import styled from "styled-components";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
-    <div>
-      <h1>Dashboard</h1>;
+    <>
+      <h1>Dashboard</h1>
       <Container>
-        <Row>
-          <Col></Col>
+        <Row xs={1} md={2}>
+          <Col>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Explicabo quo maiores aspernatur fugiat libero, repudiandae et
+              vero quas doloremque! Voluptatem non doloremque velit tempore aut
+              nobis explicabo perferendis ut maxime?
+            </p>
+          </Col>
           <Col>
             <Map
               // style={{ width: "100px", heigth: "100px" }}
@@ -31,12 +38,12 @@ const Dashboard = () => {
         </Row>
       </Container>
       ;
-    </div>
+    </>
   );
 };
 
 const Map = styled(MapContainer)`
-  width: 500px;
+  width: 100%;
   height: 500px;
 `;
 
