@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { MapContainer, TileLayer } from "react-leaflet";
+import UserContext from "../UserContext";
 // Marker, Popup
 import styled from "styled-components";
 
 const Dashboard = () => {
+  const { userToken } = useContext(UserContext);
   return (
     <div>
       <h1>Dashboard</h1>;

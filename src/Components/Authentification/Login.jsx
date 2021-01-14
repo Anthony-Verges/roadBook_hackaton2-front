@@ -10,7 +10,8 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [userToken, setUserToken] = useState("");
+  const [userToken, setUserToken] = useState("");
+  console.log(userToken);
 
   const handleSubmit = (e) => {
     const datas = {
@@ -21,6 +22,7 @@ const Login = () => {
     axios
       .post("http://localhost:8000/api/v1/auth", datas)
       .then((response) => {
+        setUserToken(response.data.token);
         localStorage.setItem("token", response.data.token);
 
         axios.interceptors.request.use(
