@@ -20,10 +20,10 @@ const Header = () => {
 };
 
 const HeaderGrid = styled(Row)`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 `;
 
 const LogoHeader = styled.img`
