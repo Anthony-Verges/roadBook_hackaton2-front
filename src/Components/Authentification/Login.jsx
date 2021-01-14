@@ -29,6 +29,7 @@ const Login = () => {
           (config) => {
             const { origin } = new URL(config.url);
             const allowedOrigins = localStorage.getItem("token");
+            const token = localStorage.getItem("token");
             if (allowedOrigins.includes(origin)) {
               // eslint-disable-next-line no-undef
               config.headers.authorization = `Bearer ${token}`;
