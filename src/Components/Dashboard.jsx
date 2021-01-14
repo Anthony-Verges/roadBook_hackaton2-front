@@ -1,22 +1,10 @@
-
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { MapContainer, TileLayer } from "react-leaflet";
-import UserContext from "../UserContext";
-// Marker, Popup
-
 import { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardTitle,
-  CardText,
-  Spinner,
-  Button,
-} from "reactstrap";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+// import UserContext from "../UserContext";
+
+import { Card, CardTitle, CardText, Spinner, Button } from "reactstrap";
 
 import styled from "styled-components";
 import Header from "./Header/Header";
@@ -24,9 +12,6 @@ import axios from "axios";
 import { API_URL } from "../env";
 
 const Dashboard = () => {
-
-  const { userToken } = useContext(UserContext);
-
   const [trips, setTrips] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -44,7 +29,6 @@ const Dashboard = () => {
     };
     getUser();
   }, []);
-
 
   return (
     <>
@@ -92,10 +76,8 @@ const Dashboard = () => {
               </Col>
             </Row>
           </Container>
-          ;
         </div>
       )}
-      ;
     </>
   );
 };

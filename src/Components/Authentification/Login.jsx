@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
 import logo from "../Images/logoOTRA_W.png";
-// import { useHistory } from "react-router-dom";
+import UserContext from "../../UserContext";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
-  // const history = useHistory();
+  const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userToken, setUserToken] = useState("");
+  const { userToken, setUserToken } = useContext(UserContext);
   console.log(userToken);
 
   const handleSubmit = (e) => {
@@ -25,22 +26,23 @@ const Login = () => {
         setUserToken(response.data.token);
         localStorage.setItem("token", response.data.token);
 
-        axios.interceptors.request.use(
-          (config) => {
-            const { origin } = new URL(config.url);
-            const allowedOrigins = localStorage.getItem("token");
-            const token = localStorage.getItem("token");
-            if (allowedOrigins.includes(origin)) {
-              // eslint-disable-next-line no-undef
-              config.headers.authorization = `Bearer ${token}`;
+        axios.interceptors.request
+          .use(
+            (config) => {
+              const { origin } = new URL(config.url);
+              const allowedOrigins = localStorage.getItem("token");
+              const token = localStorage.getItem("token");
+              if (allowedOrigins.includes(origin)) {
+                // eslint-disable-next-line no-undef
+                config.headers.authorization = `Bearer ${token}`;
+              }
+              return config;
+            },
+            (error) => {
+              return Promise.reject(error);
             }
-            return config;
-          },
-          (error) => {
-            return Promise.reject(error);
-          }
-        );
-        // .then(history.push("/Dashboard"));
+          )
+          .then(history.push("/Dashboard"));
       })
 
       .catch((err) => {

@@ -4,25 +4,37 @@ import Login from "./Components/Authentification/Login";
 import Register from "./Components/Authentification/Register";
 import Dashboard from "./Components/Dashboard";
 import { useState } from "react";
-import Trip from "./Components/Dashboard";
+// import Trip from "./Components/Dashboard";
 import Layout from "./Layout";
 
 const Router = () => {
-  const [userToken, setUserToken] = useState("");
+  const [userToken, setUserToken] = useState(false);
+
+  const checkToken = () => {
+    if (userToken) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ userToken, setUserToken }}>
-         <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/Registration" component={Register} />
-      </Switch>
-      <Switch>
-        <Layout>
-          <Route exact path="/Dashboard" component={Dashboard} />
-          <Route exact path="/trips" component={Trip} />
-          <Route path="/trips/:id" component={Trip} />
-        </Layout>
-      </Switch> 
+        <Switch>
+          {checkToken() ? (
+            <>
+              <Layout>
+                <Route exact path="/Dashboard" component={Dashboard} />
+                {/* <Route exact path="/" component={Login} /> */}
+                <Route exact path="/Registration" component={Register} />
+              </Layout>
+            </>
+          ) : (
+            <Route exact path="/" component={Login} />
+
+            // <Login exact path="/" />
+          )}
+        </Switch>
       </UserContext.Provider>
     </BrowserRouter>
   );
