@@ -19,15 +19,15 @@ const itemIds = [
   },
   {
     title: "PREVIOUS TRIPS",
-    path: "/Location",
+    path: "/Dashboard",
   },
   {
     title: "NEW TRIP ",
-    path: "/Evenements",
+    path: "/Dashboard",
   },
   {
     title: "FOLLOWERS",
-    path: "/Contact",
+    path: "/Dashboard",
   },
 ];
 

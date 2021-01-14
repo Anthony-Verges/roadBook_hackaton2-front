@@ -1,6 +1,6 @@
 import Header from "./Components/Header/Header";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "./App.css";
+// import "./App.css";
 import Footer from "./Components/Footer/Footer";
 
 function App() {
@@ -30,4 +30,3 @@ function App() {
 }
 
 export default App;
-

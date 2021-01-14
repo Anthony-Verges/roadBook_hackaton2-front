@@ -27,7 +27,10 @@ export const MenuItem = ({ path, title }) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <img src={icon} />
+        <img
+          src={icon}
+          alt="TRAVELR your new travel partner all around the word"
+        />
         <a className="styleMenuItems" href={path}>
           <span>{title}</span>
         </a>
