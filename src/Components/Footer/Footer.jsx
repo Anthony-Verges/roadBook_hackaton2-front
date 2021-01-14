@@ -5,6 +5,7 @@ import styled from "styled-components";
 import logoFb from "./logoFacebook.png";
 import logoLkd from "./logoLinkedin.png";
 import logoInsta from "./logoInstagram.png";
+import ping from "../../Components/Header/Burger/ping.png";
 
 const Footer = () => {
   return (
@@ -24,10 +25,34 @@ const Footer = () => {
               </Paragraphe>
             </Col>
             <Col>
-              <List>CONTACT US</List>
-              <List>LEGAL INFORMATION</List>
-              <List>PRIVACY POLICY</List>
-              <List>MY ACCOUNT</List>
+              <List>
+                <img
+                  src={ping}
+                  alt="TRAVELR your new travel partner all around the word"
+                />
+                CONTACT US
+              </List>
+              <List>
+                <img
+                  src={ping}
+                  alt="TRAVELR your new travel partner all around the word"
+                />
+                LEGAL INFORMATION
+              </List>
+              <List>
+                <img
+                  src={ping}
+                  alt="TRAVELR your new travel partner all around the word"
+                />
+                PRIVACY POLICY
+              </List>
+              <List>
+                <img
+                  src={ping}
+                  alt="TRAVELR your new travel partner all around the word"
+                />
+                MY ACCOUNT
+              </List>
             </Col>
             <Col>
               <RowStyled>

@@ -33,6 +33,7 @@ const MenuBurger = () => {
 
   return (
     <motion.nav
+      id="nav"
       initial={false}
       animate={isOpen ? "open" : "closed"}
       custom={height}
