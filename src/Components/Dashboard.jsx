@@ -1,108 +1,55 @@
+import "mapbox-gl/dist/mapbox-gl.css";
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import React, { useState, useRef, useCallback } from "react";
+import MapGL from "react-map-gl";
+import Geocoder from "react-map-gl-geocoder";
 
-import React, { useContext } from "react";
-import { Container, Row, Col } from "reactstrap";
-import { MapContainer, TileLayer } from "react-leaflet";
-import UserContext from "../UserContext";
-// Marker, Popup
-
-import { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardTitle,
-  CardText,
-  Spinner,
-  Button,
-} from "reactstrap";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
-import styled from "styled-components";
-import Header from "./Header/Header";
-import axios from "axios";
-import { API_URL } from "../env";
+const MAPBOX_TOKEN =
+  "pk.eyJ1IjoiYWxiMSIsImEiOiJja2p4ZGlnMDEwZ2d2MnFwZzA4eGswbmM5In0.BOWF9kak7u5wTast5_SrwQ";
 
 const Dashboard = () => {
+  const [viewport, setViewport] = useState({
+    latitude: 37.7577,
+    longitude: -122.4376,
+    zoom: 8,
+  });
+  const mapRef = useRef();
+  const handleViewportChange = useCallback(
+    (newViewport) => setViewport(newViewport),
+    []
+  );
 
-  const { userToken } = useContext(UserContext);
+  const handleGeocoderViewportChange = useCallback(
+    (newViewport) => {
+      const geocoderDefaultOverrides = { transitionDuration: 1000 };
 
-  const [trips, setTrips] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const trip = await axios.get(`${API_URL}/trips`);
-
-        setTrips(trip.data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getUser();
-  }, []);
-
+      return handleViewportChange({
+        ...newViewport,
+        ...geocoderDefaultOverrides,
+      });
+    },
+    [handleViewportChange]
+  );
 
   return (
-    <>
-      {loading ? (
-        <Spinner color="primary" />
-      ) : (
-        <div>
-          <Header />
-          <h1>Dashboard</h1>
-          <Container>
-            <Row>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle tag="h5">{trips.title}</CardTitle>
-                  <CardText>Durée du séjour: {trips.duration}</CardText>
-                  <CardText>{trips.description}</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle tag="h5">Special Title Treatment</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-                <Map
-                  // style={{ width: "100px", heigth: "100px" }}
-                  center={[43.477, -1.565]}
-                  zoom={13}
-                  scrollWheelZoom={false}
-                >
-                  <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-                  {/* <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker> */}
-                </Map>
-              </Col>
-            </Row>
-          </Container>
-          ;
-        </div>
-      )}
-      ;
-    </>
+    <div style={{ height: "100vh" }}>
+      <MapGL
+        ref={mapRef}
+        {...viewport}
+        width="100%"
+        height="100%"
+        onViewportChange={handleViewportChange}
+        mapboxApiAccessToken={MAPBOX_TOKEN}
+      >
+        <Geocoder
+          mapRef={mapRef}
+          onViewportChange={handleGeocoderViewportChange}
+          mapboxApiAccessToken={MAPBOX_TOKEN}
+          position="top-left"
+        />
+      </MapGL>
+    </div>
   );
 };
-
-const Map = styled(MapContainer)`
-  width: 500px;
-  height: 500px;
-`;
 
 export default Dashboard;
