@@ -20,8 +20,8 @@ const Header = () => {
 };
 
 const HeaderGrid = styled(Row)`
-  /* display: flex;
-  flex-direction: column;
+  display: flex;
+  /* flex-direction: column;
   justify-content: center;
   align-items: center; */
 `;

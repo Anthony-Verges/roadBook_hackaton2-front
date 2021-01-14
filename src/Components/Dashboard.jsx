@@ -3,15 +3,18 @@ import { Container, Row, Col } from "reactstrap";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import styled from "styled-components";
 import Header from "./Header/Header";
+import PopUpTrip from "./Trips/PopupTrip";
 
 const Dashboard = () => {
   return (
     <div>
       <Header />
-      <h1>Dashboard</h1>;
+      <h1>Dashboard</h1>
       <Container>
         <Row>
-          <Col></Col>
+          <Col>
+            <PopUpTrip />
+          </Col>
           <Col>
             <Map
               // style={{ width: "100px", heigth: "100px" }}
@@ -32,7 +35,6 @@ const Dashboard = () => {
           </Col>
         </Row>
       </Container>
-      ;
     </div>
   );
 };

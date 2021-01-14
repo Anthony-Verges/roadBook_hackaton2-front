@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { API_URL } from "../env";
+import { API_URL } from "../../env";
 import { Spinner } from "reactstrap";
 
-const TestTrip = () => {
+const Trip = () => {
   const [trip, setTrip] = useState([]);
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,4 +46,4 @@ const TestTrip = () => {
   );
 };
 
-export default TestTrip;
+export default Trip;

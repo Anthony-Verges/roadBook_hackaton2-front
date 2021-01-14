@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./Components/HomeLogin";
 import Register from "./Components/Register";
 import Dashboard from "./Components/Dashboard";
-import Trip from "./Components/Trip";
+import Trip from "./Components/Trips/Trip";
 import Layout from "./Layout";
 
 const Router = () => {

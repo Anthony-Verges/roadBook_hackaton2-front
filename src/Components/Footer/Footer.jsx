@@ -13,7 +13,7 @@ const Footer = () => {
       <Background>
         <Container fluid>
           <RowStyled>
-            <Col>
+            <Col xs={12} md={4}>
               <Logo1
                 src={logo}
                 alt="TRAVELR your new travel partner all around the word"
@@ -24,7 +24,7 @@ const Footer = () => {
                 your next trip!
               </Paragraphe>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
               <List>
                 <img
                   src={ping}
@@ -54,7 +54,7 @@ const Footer = () => {
                 MY ACCOUNT
               </List>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
               <RowStyled>
                 <Col>
                   <Logo2 src={logoInsta} alt="" />
