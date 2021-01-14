@@ -1,33 +1,55 @@
 import React from "react";
+import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
 import logo from "../Images/logoOTRA_W.png";
-import PropTypes from "prop-types";
 
-const Login = ({ setToken }) => {
-  const [userName, setUsername] = useState();
-  const [password, setPassword] = useState();
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [userToken, setUserToken] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const token = {
-      userName,
+    const datas = {
+      email,
       password,
     };
-    setToken(token);
-    console.log(token);
+    e.preventDefault();
+    axios
+      .post("http://localhost:8000/api/v1/auth", datas)
+      .then((response) => {
+        localStorage.setItem("token", response.data.token);
+
+        axios.interceptors.request.use(
+          (config) => {
+            const { origin } = new URL(config.url);
+            const allowedOrigins = localStorage.getItem("token");
+            if (allowedOrigins.includes(origin)) {
+              // eslint-disable-next-line no-undef
+              config.headers.authorization = `Bearer ${token}`;
+            }
+            return config;
+          },
+          (error) => {
+            return Promise.reject(error);
+          }
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-    <Form>
+    <Form method="post" onSubmit={(e) => handleSubmit(e)}>
       <Img src={logo} alt="" />
       <Title1>LOG IN</Title1>
       <label>
-        <Paragraphe>Username</Paragraphe>
+        <Paragraphe>Email</Paragraphe>
         <Input
           type="text"
           onChange={(e) => {
-            setUsername(e.target.value);
+            setEmail(e.target.value);
           }}
         />
       </label>
@@ -41,9 +63,7 @@ const Login = ({ setToken }) => {
         />
       </label>
       <div>
-        <Button type="submit" onClick={handleSubmit}>
-          Submit
-        </Button>
+        <Button>Submit</Button>
         <Paragraphe>You don't have an account ?</Paragraphe>
         <Button type="submit">Register</Button>
       </div>
@@ -84,6 +104,7 @@ const Button = styled.button`
   color: white;
   font-size: 15px;
   outline: none;
+  cursor: pointer;
 `;
 
 const Paragraphe = styled.p`
@@ -91,9 +112,5 @@ const Paragraphe = styled.p`
   font-size: 20px;
   font-family: “Pragati Narrow”, sans-serif; ;
 `;
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
 
 export default Login;
