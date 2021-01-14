@@ -2,10 +2,12 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import styled from "styled-components";
+import Header from "./Header/Header";
 
 const Dashboard = () => {
   return (
     <div>
+      <Header />
       <h1>Dashboard</h1>;
       <Container>
         <Row>

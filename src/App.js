@@ -1,13 +1,14 @@
-import Header from "./Components/Header/Header";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+// import Header from "./Components/Header/Header";
+// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 // import "./App.css";
 // import Footer from "./Components/Footer/Footer";
 
-function App() {
+{/*function App() {
   return (
     <div>
       <Header />
-      {/* <MapContainer
+       <MapContainer
         id="mapId"
         // style={{ width: "100px", heigth: "100px" }}
         center={[43.477, -1.565]}
@@ -24,9 +25,12 @@ function App() {
         </Popup>
       </Marker> */}
       {/* </MapContainer> */}
-      {/* <Footer /> */}
+      {/* <Footer /> 
     </div>
-  );
+  );*/}
+
+function App() {
+  return <div></div>;
 }
 
 export default App;
