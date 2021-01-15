@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
+import axios from "axios";
+import React, { useState, useEffect, useHistory } from "react";
+import { Button, Popover, PopoverBody } from "reactstrap";
+import { API_URL } from "../../env";
 import PopUpForm from "./FormNewTrip";
 
-const PopUpTrip = (props) => {
+const PopUpTrip = () => {
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const [title, setTitle] = useState();
+  const [trips, setTrips] = useState();
+  const [loading, setLoading] = useState();
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 

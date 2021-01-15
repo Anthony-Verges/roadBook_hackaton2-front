@@ -52,8 +52,8 @@ const Dashboard = () => {
         setLoading(false);
       }
     };
-    getUser([]);
-  });
+    getUser();
+  }, []);
 
   return (
     <>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                   return (
                     <TripCard
                       title={trip.title}
-                      Date={trip.Date}
+                      date={trip.Date}
                       description={trip.description}
                       latitude={trip.latitude}
                       longitude={trip.longitude}
