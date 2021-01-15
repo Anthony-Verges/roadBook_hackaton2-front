@@ -1,8 +1,38 @@
 import React from "react";
+// import axios from "axios";
+// import { useState } from "react";
+// import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../Images/logoOTRA_W.png";
 
 const Register = () => {
+  // const history = useHistory();
+
+  // const [datas, setDatas] = useState({
+  //   firstname: "",
+  //   lastaname: "",
+  //   email: "",
+  //   password: "",
+  // });
+
+  // const handleSubmit = (e)=>{
+  //   if (
+  //     datas.firstanme &&
+  //     datas.lastname &&
+  //     datas.email &&
+  //     datas.password
+  //   ) {
+  //     e.preventDefault();
+  //     axios.post('http://lacalhost:8000/api/v1/users', datas);
+  //     .then(()=>{
+  //       history.pushState('/login')
+  //     })
+  //     .catch((err)=> console.log(err));
+  //   } else {
+
+  //   }
+  // };
+
   return (
     <Form>
       <Img src={logo} alt="" />
