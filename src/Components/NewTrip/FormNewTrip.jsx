@@ -1,5 +1,5 @@
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { API_URL } from "../../env";
 
@@ -9,21 +9,18 @@ import { API_URL } from "../../env";
 // const upload = multer({ dest: "tmp/" });
 // const fs = require("fs");
 
-const PopUpForm = ({ title, date, description, latitude }) => {
-  const { userToken } = useContext();
+const PopUpForm = ({ title, date, description, latitude, longitude }) => {
+  //const { userToken } = useContext();
   const [newTrip, setNewTrip] = useState({
     title: "",
     date: "",
     description: "",
     latitude: "",
+    longitude: "",
   });
   const handleSubmit = (e) => {
     e.prevent.default();
-    axios.post(`${API_URL}/trips`, newTrip, {
-      header: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    });
+    axios.post(`${API_URL}/trips`, newTrip);
   };
 
   return (
@@ -52,10 +49,21 @@ const PopUpForm = ({ title, date, description, latitude }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="City">City</Label>
+          <Label for="City">latitude</Label>
           <Input
             onChange={(e) => {
               setNewTrip({ ...newTrip, latitude: +e.target.value });
+            }}
+            type="number"
+            name="title"
+            id="title"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="City">longitude</Label>
+          <Input
+            onChange={(e) => {
+              setNewTrip({ ...newTrip, longitude: +e.target.value });
             }}
             type="number"
             name="title"
