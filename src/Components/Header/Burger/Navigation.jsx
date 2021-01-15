@@ -32,9 +32,11 @@ const itemIds = [
 ];
 
 export const Navigation = () => (
-  <motion.ul variants={variants}>
-    {itemIds.map((i) => (
-      <MenuItem i={i} path={i.path} title={i.title} key={i} />
-    ))}
-  </motion.ul>
+  <>
+    <motion.ul variants={variants}>
+      {itemIds.map((i) => (
+        <MenuItem i={i} path={i.path} title={i.title} key={i} />
+      ))}
+    </motion.ul>
+  </>
 );
