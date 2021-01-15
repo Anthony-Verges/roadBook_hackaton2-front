@@ -6,30 +6,28 @@ import LogOut from "./LogOut";
 
 const Header = () => {
   return (
-    <Container>
-      <HeaderGrid>
-        <Col>
-          <MenuBurger />
-        </Col>
-        <Col>
-          <LogoHeader src={logo} alt="TravelR, your trip at a glence" />
-        </Col>
-        <Col>
-          <LogOut />
-        </Col>
-      </HeaderGrid>
-    </Container>
+    <>
+      <Container fluid>
+        <Row>
+          <Col>
+            <MenuBurger />
+          </Col>
+          <Col>
+            <LogoHeader src={logo} alt="TravelR, your trip at a glence" />
+          </Col>
+          <Col>
+            <LogOut />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 
-const HeaderGrid = styled(Row)`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-`;
-
 const LogoHeader = styled.img`
   width: 100px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 `;
 export default Header;

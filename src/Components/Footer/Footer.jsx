@@ -6,6 +6,11 @@ import logoFb from "./logoFacebook.png";
 import logoLkd from "./logoLinkedin.png";
 import logoInsta from "./logoInstagram.png";
 import ping from "../../Components/Header/Burger/ping.png";
+// import * as FaIcons from 'react-icons/fa';
+// RiFacebookCircleFill
+// RiInstagramLine
+// RiLinkedinBoxFill
+// TiSocialLinkedinCircular
 
 const Footer = () => {
   return (
@@ -13,7 +18,7 @@ const Footer = () => {
       <Background>
         <Container fluid>
           <RowStyled>
-            <Col>
+            <ColStyled xs="12" md="4">
               <Logo1
                 src={logo}
                 alt="TRAVELR your new travel partner all around the word"
@@ -23,8 +28,8 @@ const Footer = () => {
                 the world, plan your trip easly, and find the best way to enjoy
                 your next trip!
               </Paragraphe>
-            </Col>
-            <Col>
+            </ColStyled>
+            <ColStyled xs="12" md="4">
               <List>
                 <img
                   src={ping}
@@ -53,9 +58,9 @@ const Footer = () => {
                 />
                 MY ACCOUNT
               </List>
-            </Col>
-            <Col>
-              <RowStyled>
+            </ColStyled>
+            <ColStyled xs="12" md="4">
+              <Row>
                 <Col>
                   <Logo2 src={logoInsta} alt="" />
                 </Col>
@@ -65,8 +70,8 @@ const Footer = () => {
                 <Col>
                   <Logo2 src={logoLkd} alt="" />
                 </Col>
-              </RowStyled>
-            </Col>
+              </Row>
+            </ColStyled>
           </RowStyled>
         </Container>
       </Background>
@@ -76,6 +81,12 @@ const Footer = () => {
 
 const RowStyled = styled(Row)`
   display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+`;
+
+const ColStyled = styled(Col)`
+  text-align: center;
 `;
 
 const Background = styled.div`
@@ -85,8 +96,9 @@ const Background = styled.div`
 
 const List = styled.li`
   padding-top: 20px;
+  padding-bottom: 20px;
   list-style: none;
-  margin: 10px;
+  margin-left: 130px;
   color: white;
 `;
 
