@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import Router from "./Router";
 import reportWebVitals from "./reportWebVitals";
-import "leaflet/dist/leaflet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(

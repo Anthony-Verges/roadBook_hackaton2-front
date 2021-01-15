@@ -1,19 +1,42 @@
-// import React, { useContext } from "react";
-import { Container, Row, Col } from "reactstrap";
-import { MapContainer, TileLayer } from "react-leaflet";
-import { useState, useEffect } from "react";
-// import UserContext from "../UserContext";
-
-import { Card, CardTitle, CardText, Spinner, Button } from "reactstrap";
-
-import styled from "styled-components";
+import { Col, Container, Row, Spinner } from "reactstrap";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Header from "./Header/Header";
 import axios from "axios";
 import { API_URL } from "../env";
+import TripCard from "./TripCard";
+import MapGL from "react-map-gl";
+import Geocoder from "react-map-gl-geocoder";
+import "mapbox-gl/dist/mapbox-gl.css";
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+
+const MAPBOX_TOKEN =
+  "pk.eyJ1IjoiYWxiMSIsImEiOiJja2p4ZGlnMDEwZ2d2MnFwZzA4eGswbmM5In0.BOWF9kak7u5wTast5_SrwQ";
 
 const Dashboard = () => {
   const [trips, setTrips] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [viewport, setViewport] = useState({
+    latitude: 37.7577,
+    longitude: -122.4376,
+    zoom: 8,
+  });
+  const mapRef = useRef();
+  const handleViewportChange = useCallback(
+    (newViewport) => setViewport(newViewport),
+    []
+  );
+
+  const handleGeocoderViewportChange = useCallback(
+    (newViewport) => {
+      const geocoderDefaultOverrides = { transitionDuration: 1000 };
+
+      return handleViewportChange({
+        ...newViewport,
+        ...geocoderDefaultOverrides,
+      });
+    },
+    [handleViewportChange]
+  );
 
   useEffect(() => {
     const getUser = async () => {
@@ -27,8 +50,8 @@ const Dashboard = () => {
         setLoading(false);
       }
     };
-    getUser();
-  }, []);
+    getUser([]);
+  });
 
   return (
     <>
@@ -37,42 +60,40 @@ const Dashboard = () => {
       ) : (
         <div>
           <Header />
-          <h1>Dashboard</h1>
-          <Container>
+          <Container className="pt-5">
             <Row>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle tag="h5">{trips.title}</CardTitle>
-                  <CardText>Durée du séjour: {trips.duration}</CardText>
-                  <CardText>{trips.description}</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
+              <Col>
+                {trips.map((trip) => {
+                  return (
+                    <TripCard
+                      title={trip.title}
+                      Date={trip.Date}
+                      description={trip.description}
+                      latitude={trip.latitude}
+                      longitude={trip.longitude}
+                      key={trip.id}
+                    />
+                  );
+                })}
               </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle tag="h5">Special Title Treatment</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-                <Map
-                  // style={{ width: "100px", heigth: "100px" }}
-                  center={[43.477, -1.565]}
-                  zoom={13}
-                  scrollWheelZoom={false}
-                >
-                  <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-                  {/* <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker> */}
-                </Map>
+              <Col>
+                <div className="mb-4" style={{ height: "100vh" }}>
+                  <MapGL
+                    ref={mapRef}
+                    {...viewport}
+                    width="100%"
+                    height="100%"
+                    onViewportChange={handleViewportChange}
+                    mapboxApiAccessToken={MAPBOX_TOKEN}
+                  >
+                    <Geocoder
+                      mapRef={mapRef}
+                      onViewportChange={handleGeocoderViewportChange}
+                      mapboxApiAccessToken={MAPBOX_TOKEN}
+                      position="top-left"
+                    />
+                  </MapGL>
+                </div>
               </Col>
             </Row>
           </Container>
@@ -81,10 +102,5 @@ const Dashboard = () => {
     </>
   );
 };
-
-const Map = styled(MapContainer)`
-  width: 500px;
-  height: 500px;
-`;
 
 export default Dashboard;
