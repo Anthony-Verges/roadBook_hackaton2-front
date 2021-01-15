@@ -5,7 +5,6 @@ import styled from "styled-components";
 import logoFb from "./logoFacebook.png";
 import logoLkd from "./logoLinkedin.png";
 import logoInsta from "./logoInstagram.png";
-import ping from "../../Components/Header/Burger/ping.png";
 
 const Footer = () => {
   return (
