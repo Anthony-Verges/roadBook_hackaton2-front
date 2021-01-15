@@ -2,7 +2,7 @@ import logo from "../Images/logoOTRA.png";
 import styled from "styled-components";
 import MenuBurger from "./Burger/MenuBurger";
 import { Container, Col, Row } from "reactstrap";
-import LogOut from "./LogOut";
+import LogOut from "../Authentification/LogOut";
 
 const Header = () => {
   return (

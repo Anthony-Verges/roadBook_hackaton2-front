@@ -5,6 +5,7 @@ import styled from "styled-components";
 import logo from "../Images/logoOTRA_W.png";
 import UserContext from "../../UserContext";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const history = useHistory();
@@ -51,33 +52,39 @@ const Login = () => {
   };
 
   return (
-    <Form method="post" onSubmit={(e) => handleSubmit(e)}>
-      <Img src={logo} alt="" />
-      <Title1>LOG IN</Title1>
-      <label>
-        <Paragraphe>Email</Paragraphe>
-        <Input
-          type="text"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        <Paragraphe>Password</Paragraphe>
-        <Input
-          type="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </label>
-      <div>
-        <Button>Submit</Button>
-        <Paragraphe>You don't have an account ?</Paragraphe>
-        <Button type="submit">Register</Button>
-      </div>
-    </Form>
+    <>
+      <Form method="post" onSubmit={(e) => handleSubmit(e)}>
+        <Img src={logo} alt="" />
+        <Title1>LOG IN</Title1>
+        <label>
+          <Paragraphe>Email</Paragraphe>
+          <Input
+            type="text"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </label>
+        <div>
+          <label>
+            <Paragraphe>Password</Paragraphe>
+            <Input
+              type="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </label>
+          <div>
+            <Button>Submit</Button>
+            <Paragraphe>You don't have an account ?</Paragraphe>
+            <Link to="/Registration">
+              <Button>Register</Button>
+            </Link>
+          </div>
+        </div>
+      </Form>
+    </>
   );
 };
 
@@ -102,7 +109,7 @@ const Form = styled.form`
   height: 100vh;
   text-align: center;
   padding-top: 50px;
-  padding-bottom: 100px;
+  padding-bottom: 150px;
 `;
 
 const Button = styled.button`
@@ -110,17 +117,23 @@ const Button = styled.button`
   background-color: #2a2f45;
   padding: 14px 40px;
   border-style: none;
-  margin-top: 25px;
   color: white;
   font-size: 15px;
   outline: none;
   cursor: pointer;
+  margin-bottom: 40px;
 `;
 
 const Paragraphe = styled.p`
   color: white;
   font-size: 20px;
-  font-family: “Pragati Narrow”, sans-serif; ;
+  font-family: “Pragati Narrow”, sans-serif;
+  padding-top: 0px;
+`;
+const Section = styled.div`
+  color: white;
+  background-color: #5ad1d7;
+  text-align: center;
 `;
 
 export default Login;
