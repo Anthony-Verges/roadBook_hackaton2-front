@@ -36,4 +36,7 @@ const LogOut = () => {
     </div>
   );
 };
+
+// const StyledButton = styled(Button)``;
+
 export default LogOut;

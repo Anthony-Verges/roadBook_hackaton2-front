@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
     <>
       <Container fluid>
         <Row>
-          <Col md="10">{children}</Col>
+          <Col>{children}</Col>
         </Row>
       </Container>
       <Footer />

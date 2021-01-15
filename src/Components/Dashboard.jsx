@@ -8,6 +8,8 @@ import MapGL from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import PopUpTrip from "./NewTrip/PopupTrip";
+import styled from "styled-components";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWxiMSIsImEiOiJja2p4ZGlnMDEwZ2d2MnFwZzA4eGswbmM5In0.BOWF9kak7u5wTast5_SrwQ";
@@ -60,7 +62,8 @@ const Dashboard = () => {
       ) : (
         <div>
           <Header />
-          <Container className="pt-5">
+
+          <Container fluid className="pt-5">
             <Row>
               <Col>
                 {trips.map((trip) => {
@@ -75,6 +78,9 @@ const Dashboard = () => {
                     />
                   );
                 })}
+                <ButtonPosition>
+                  <PopUpTrip />
+                </ButtonPosition>
               </Col>
               <Col>
                 <div className="mb-4" style={{ height: "100vh" }}>
@@ -102,5 +108,10 @@ const Dashboard = () => {
     </>
   );
 };
+
+const ButtonPosition = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 export default Dashboard;
