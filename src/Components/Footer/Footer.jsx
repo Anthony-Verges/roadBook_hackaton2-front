@@ -12,20 +12,79 @@ const Footer = () => {
     <div>
       <Background>
         <Container fluid>
-          <RowStyled>
-            <Col>
+          <MainStyled>
+            <Row>
               <Logo1
                 src={logo}
                 alt="TRAVELR your new travel partner all around the word"
               />
+            </Row>
+            <Row>
               <Paragraphe>
                 TRAVELR lets you keep track of all your favorite places around
                 the world, plan your trip easly, and find the best way to enjoy
                 your next trip!
               </Paragraphe>
-            </Col>
-            <Col>
-              <List>
+            </Row>
+            <Row>
+              <Col>
+                <Logo2 src={logoInsta} alt="" />
+              </Col>
+              <Col>
+                <Logo2 src={logoFb} alt="" />
+              </Col>
+              <Col>
+                <Logo2 src={logoLkd} alt="" />
+              </Col>
+            </Row>
+          </MainStyled>
+        </Container>
+      </Background>
+    </div>
+  );
+};
+
+const MainStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Background = styled.div`
+  background-color: #5ad1d7;
+  padding: 50px 0 50px 0;
+`;
+
+// const List = styled.li`
+//   padding-top: 20px;
+//   list-style: none;
+//   margin: 10px;
+//   color: white;
+// `;
+
+const Logo1 = styled.img`
+  width: 200px;
+`;
+
+const Logo2 = styled.img`
+  width: 30px;
+`;
+
+const Paragraphe = styled.p`
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  width: 500px;
+  text-align: center;
+  color: white;
+`;
+
+export default Footer;
+
+{
+  /* </Col>
+            {/* <Col>
+              {/* <List>
                 <img
                   src={ping}
                   alt="TRAVELR your new travel partner all around the word"
@@ -52,56 +111,5 @@ const Footer = () => {
                   alt="TRAVELR your new travel partner all around the word"
                 />
                 MY ACCOUNT
-              </List>
-            </Col>
-            <Col>
-              <RowStyled>
-                <Col>
-                  <Logo2 src={logoInsta} alt="" />
-                </Col>
-                <Col>
-                  <Logo2 src={logoFb} alt="" />
-                </Col>
-                <Col>
-                  <Logo2 src={logoLkd} alt="" />
-                </Col>
-              </RowStyled>
-            </Col>
-          </RowStyled>
-        </Container>
-      </Background>
-    </div>
-  );
-};
-
-const RowStyled = styled(Row)`
-  display: flex;
-`;
-
-const Background = styled.div`
-  background-color: #5ad1d7;
-  padding: 50px 0 50px 0;
-`;
-
-const List = styled.li`
-  padding-top: 20px;
-  list-style: none;
-  margin: 10px;
-  color: white;
-`;
-
-const Logo1 = styled.img`
-  margin-left: 20px;
-  width: 120px;
-`;
-
-const Logo2 = styled.img`
-  width: 30px;
-`;
-
-const Paragraphe = styled.p`
-  margin-left: 20px;
-  color: white;
-`;
-
-export default Footer;
+              </List> */
+}

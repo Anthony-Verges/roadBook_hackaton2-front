@@ -1,35 +1,33 @@
-import logo from "../Images/logoOTRA.png";
+import logo from "../Images/logoOTRA_W.png";
 import styled from "styled-components";
-import MenuBurger from "./Burger/MenuBurger";
 import { Container, Col, Row } from "reactstrap";
 import LogOut from "./LogOut";
 
 const Header = () => {
   return (
-    <Container>
-      <HeaderGrid>
+    <Container fluid>
+      <HeaderRow>
+        <Col></Col>
         <Col>
-          <MenuBurger />
-        </Col>
-        <Col>
-          <LogoHeader src={logo} alt="TravelR, your trip at a glence" />
+          <MainLogo src={logo} alt="" />
         </Col>
         <Col>
           <LogOut />
         </Col>
-      </HeaderGrid>
+      </HeaderRow>
     </Container>
   );
 };
 
-const HeaderGrid = styled(Row)`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
+const HeaderRow = styled(Row)`
+  background-color: #5ad1d7;
 `;
 
-const LogoHeader = styled.img`
-  width: 100px;
+const MainLogo = styled.img`
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
+
 export default Header;

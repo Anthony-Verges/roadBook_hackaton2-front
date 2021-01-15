@@ -60,7 +60,7 @@ const Dashboard = () => {
       ) : (
         <div>
           <Header />
-          <Container className="pt-5">
+          <Container fluid className="pt-5">
             <Row>
               <Col>
                 {trips.map((trip) => {
