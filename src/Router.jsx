@@ -8,20 +8,21 @@ import { useState } from "react";
 import Layout from "./Layout";
 
 const Router = () => {
-  const [userToken, setUserToken] = useState(false);
+  const [userToken, setUserToken] = useState("");
 
-  const checkToken = () => {
-    if (userToken) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  // const checkToken = () => {
+  //   if (userToken) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // };
+
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ userToken, setUserToken }}>
         <Switch>
-          {checkToken() ? (
+          {userToken ? (
             <>
               <Layout>
                 <Route exact path="/Dashboard" component={Dashboard} />
