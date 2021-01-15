@@ -3,7 +3,7 @@ import { Card, CardText, CardTitle, Col, Button } from "reactstrap";
 function TripCard({ title, date, description, latitude, longitude }) {
   return (
     <div>
-      <Col sm="4">
+      <Col>
         <Card body>
           <CardTitle tag="h5">{title}</CardTitle>
           <CardText>{description}</CardText>
