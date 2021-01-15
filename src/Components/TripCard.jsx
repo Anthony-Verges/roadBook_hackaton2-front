@@ -5,12 +5,14 @@ function TripCard({ title, date, description, latitude, longitude }) {
     <div>
       <Col>
         <Card body>
-          <CardTitle tag="h5">{title}</CardTitle>
+          <CardTitle tag="h5" style={{ color: "#2a2f45" }}>
+            {title}
+          </CardTitle>
           <CardText>{description}</CardText>
           <CardText>{date}</CardText>
           <CardText>latitude : {latitude}</CardText>
           <CardText>longitude : {longitude}</CardText>
-          <Button>Check my roadbook</Button>
+          <Button style={{ color: "#5ad1d7" }}>Check my roadbook</Button>
         </Card>
       </Col>
     </div>
