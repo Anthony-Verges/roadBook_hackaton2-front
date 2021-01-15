@@ -1,21 +1,19 @@
-import axios from "axios";
-import React, { useState, useEffect, useHistory } from "react";
-import { Button, Popover, PopoverBody } from "reactstrap";
-import { API_URL } from "../../env";
+import React, { useState } from "react";
+import { Popover, PopoverBody } from "reactstrap";
+
 import PopUpForm from "./FormNewTrip";
+import styled from "styled-components";
 
 const PopUpTrip = () => {
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const [trips, setTrips] = useState();
-  const [loading, setLoading] = useState();
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
   return (
     <div>
-      <Button id="Popover1" type="button">
+      <ButtonStyle id="Popover1" type="button">
         Add a new trip
-      </Button>
+      </ButtonStyle>
       <Popover
         placement="bottom"
         isOpen={popoverOpen}
@@ -29,5 +27,20 @@ const PopUpTrip = () => {
     </div>
   );
 };
+
+const ButtonStyle = styled.button`
+  border-radius: 50px;
+  background-color: #2a2f45;
+  padding: 14px 40px;
+  border-style: none;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+`;
 
 export default PopUpTrip;

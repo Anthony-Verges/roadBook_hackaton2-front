@@ -1,5 +1,8 @@
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import axios from "axios";
+import { API_URL } from "../../env";
+
 // const express = require("express");
 // const router = express.Router();
 // const multer = require("multer");
@@ -7,6 +10,7 @@ import { useState } from "react";
 // const fs = require("fs");
 
 const PopUpForm = ({ title, date, description, latitude }) => {
+  const { userToken } = useContext();
   const [newTrip, setNewTrip] = useState({
     title: "",
     date: "",
@@ -15,6 +19,11 @@ const PopUpForm = ({ title, date, description, latitude }) => {
   });
   const handleSubmit = (e) => {
     e.prevent.default();
+    axios.post(`${API_URL}/trips`, newTrip, {
+      header: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
   };
 
   return (

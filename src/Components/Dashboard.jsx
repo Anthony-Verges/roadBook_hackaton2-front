@@ -66,6 +66,13 @@ const Dashboard = () => {
           <Container fluid className="pt-5">
             <Row>
               <Col>
+                <TitleStyle>Welcome on TRAVELR</TitleStyle>
+                <TitleP>
+                  TRAVELR lets you keep track of all your favorite places around
+                  the world, plan your trip easly, and find the best way to
+                  enjoy your next trip!
+                </TitleP>
+
                 {trips.map((trip) => {
                   return (
                     <TripCard
@@ -78,9 +85,7 @@ const Dashboard = () => {
                     />
                   );
                 })}
-                <ButtonPosition>
-                  <PopUpTrip />
-                </ButtonPosition>
+                <PopUpTrip />
               </Col>
               <Col>
                 <div className="mb-4" style={{ height: "100vh" }}>
@@ -109,9 +114,18 @@ const Dashboard = () => {
   );
 };
 
-const ButtonPosition = styled.div`
-  display: flex;
-  flex-direction: row;
+const TitleStyle = styled.h1`
+  color: #2a2f45;
+  font-size: 50px;
+  text-align: center;
+  font-family: "Pragati Narrow", sans-serif;
+`;
+
+const TitleP = styled.p`
+  color: #2a2f45;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Pragati Narrow", sans-serif;
 `;
 
 export default Dashboard;
