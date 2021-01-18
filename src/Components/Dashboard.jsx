@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Header from "./Header/Header";
 import axios from "axios";
 import { API_URL } from "../env";
+import { MAPBOX_TOKEN } from "../env";
 import TripCard from "./TripCard";
 import MapGL from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
@@ -10,9 +11,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import PopUpTrip from "./NewTrip/PopupTrip";
 import styled from "styled-components";
-
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoiYWxiMSIsImEiOiJja2p4ZGlnMDEwZ2d2MnFwZzA4eGswbmM5In0.BOWF9kak7u5wTast5_SrwQ";
 
 const Dashboard = () => {
   const [trips, setTrips] = useState([]);
