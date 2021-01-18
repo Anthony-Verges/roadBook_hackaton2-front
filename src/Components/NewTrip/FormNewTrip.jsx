@@ -1,7 +1,7 @@
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useState } from "react";
 import axios from "axios";
-import { API_URL } from "../../env";
+import { API_URL } from "../../../env";
 
 // const express = require("express");
 // const router = express.Router();
